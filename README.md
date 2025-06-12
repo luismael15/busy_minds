@@ -8,6 +8,10 @@ This project contains a minimal web and mobile application skeleton for the Busy
 This repository is only a starting point and does not include installed dependencies.
 Make sure to run `npm install` (or `pnpm install`) inside each directory before development.
 
+## Prerequisites
+
+- A stable Node.js version (Node 18 or later is recommended).
+
 ## Setup
 
 1. Copy `web/.env.example` to `web/.env.local` and fill in your Supabase credentials.
