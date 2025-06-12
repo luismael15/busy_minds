@@ -1,0 +1,5 @@
+node_modules
+web/.env.local
+web/.next
+mobile/node_modules
+mobile/.expo
