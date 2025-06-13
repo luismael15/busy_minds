@@ -43,22 +43,22 @@ export default function CardForm({ type, onCreated }: Props) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-2 border p-4 rounded bg-white shadow">
+    <form onSubmit={handleSubmit} className="space-y-3 border border-accent/50 p-6 rounded-xl bg-white/70 shadow">
       <h2 className="font-semibold capitalize">Create {type}</h2>
       <input
         type="text"
         placeholder="Title"
         value={title}
         onChange={e => setTitle(e.target.value)}
-        className="border w-full p-2 rounded"
+        className="border w-full p-2 rounded-md"
       />
       <textarea
         placeholder="Description"
         value={description}
         onChange={e => setDescription(e.target.value)}
-        className="border w-full p-2 rounded"
+        className="border w-full p-2 rounded-md"
       />
-      <select value={tag} onChange={e => setTag(e.target.value)} className="border w-full p-2 rounded">
+      <select value={tag} onChange={e => setTag(e.target.value)} className="border w-full p-2 rounded-md bg-white">
         <option value="" disabled>
           Select tag
         </option>
@@ -68,7 +68,7 @@ export default function CardForm({ type, onCreated }: Props) {
           </option>
         ))}
       </select>
-      <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
+      <button type="submit" className="bg-primary text-white px-4 py-2 rounded-full hover:bg-primary/80">
         Add
       </button>
     </form>

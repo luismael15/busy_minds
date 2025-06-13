@@ -25,13 +25,15 @@ export default function Login() {
   }, [router])
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 p-8">
-      <Auth
-        supabaseClient={supabase}
-        appearance={{ theme: ThemeSupa }}
-        theme="default"
-        providers={[]}
-      />
+    <div className="min-h-screen flex items-center justify-center p-8">
+      <div className="bg-white/60 rounded-3xl p-8 shadow-md w-full max-w-md">
+        <Auth
+          supabaseClient={supabase}
+          appearance={{ theme: ThemeSupa }}
+          theme="default"
+          providers={[]}
+        />
+      </div>
     </div>
   )
 }
