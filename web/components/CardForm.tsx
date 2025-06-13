@@ -26,7 +26,16 @@ export default function CardForm({ type, onCreated }: Props) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!title) return
-    await supabase.from('cards').insert({ title, description, tag, type })
+    const {
+      data: { user },
+    } = await supabase.auth.getUser()
+    await supabase.from('cards').insert({
+      title,
+      description,
+      tag,
+      type,
+      user_id: user?.id,
+    })
     setTitle('')
     setDescription('')
     setTag('')
