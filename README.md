@@ -12,7 +12,7 @@ Make sure to run `npm install` (or `pnpm install`) inside each directory before 
 
  - Create and manage "thought" and "learning" cards.
  - Cards are color coded by type and can be filtered by type, year, month and tag on the dashboard.
- - Each user only sees their own cards after signing in.
+ - Each user only sees their own cards after signing in. (Older cards that were created before user accounts were added are visible to any signed-in user.)
 
 ## Prerequisites
 
