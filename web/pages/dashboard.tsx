@@ -58,31 +58,31 @@ export default function Dashboard() {
   })
 
   return (
-    <div className="min-h-screen p-4 max-w-xl mx-auto space-y-4">
+    <div className="min-h-screen p-4 max-w-2xl mx-auto space-y-6">
       <div className="flex justify-end">
-        <button onClick={signOut} className="text-sm text-blue-600 underline">
+        <button onClick={signOut} className="text-sm text-primary underline">
           Log Out
         </button>
       </div>
       <div className="grid grid-cols-2 gap-2">
-        <select value={typeFilter} onChange={e => setTypeFilter(e.target.value)} className="border p-2 rounded">
+        <select value={typeFilter} onChange={e => setTypeFilter(e.target.value)} className="border p-2 rounded-md bg-white">
           <option value="">All Types</option>
           <option value="thought">Thought</option>
           <option value="learning">Learning</option>
         </select>
-        <select value={yearFilter} onChange={e => setYearFilter(e.target.value)} className="border p-2 rounded">
+        <select value={yearFilter} onChange={e => setYearFilter(e.target.value)} className="border p-2 rounded-md bg-white">
           <option value="">All Years</option>
           {years.map(y => (
             <option key={y} value={y}>{y}</option>
           ))}
         </select>
-        <select value={monthFilter} onChange={e => setMonthFilter(e.target.value)} className="border p-2 rounded">
+        <select value={monthFilter} onChange={e => setMonthFilter(e.target.value)} className="border p-2 rounded-md bg-white">
           <option value="">All Months</option>
           {[...Array(12)].map((_, i) => (
             <option key={i+1} value={i+1}>{i+1}</option>
           ))}
         </select>
-        <select value={tagFilter} onChange={e => setTagFilter(e.target.value)} className="border p-2 rounded">
+        <select value={tagFilter} onChange={e => setTagFilter(e.target.value)} className="border p-2 rounded-md bg-white">
           <option value="">All Tags</option>
           {tags.map(t => (
             <option key={t} value={t}>{t}</option>
@@ -92,10 +92,10 @@ export default function Dashboard() {
       {filteredCards.map(card => (
         <div
           key={card.id}
-          className={`border p-4 rounded shadow-sm bg-white ${
+          className={`border p-4 rounded-xl shadow-sm bg-white/70 ${
             card.type === 'thought'
-              ? 'border-blue-500 bg-blue-50'
-              : 'border-green-500 bg-green-50'
+              ? 'border-primary/60'
+              : 'border-green-400'
           }`}
         >
           <div className="flex justify-between">
@@ -106,8 +106,8 @@ export default function Dashboard() {
           </div>
           <p className="text-sm text-gray-500 flex items-center space-x-2">
             <span
-              className={`text-white text-xs px-2 py-1 rounded ${
-                card.type === 'thought' ? 'bg-blue-500' : 'bg-green-500'
+              className={`text-white text-xs px-2 py-1 rounded-full ${
+                card.type === 'thought' ? 'bg-primary' : 'bg-green-500'
               }`}
             >
               {card.type}
@@ -120,8 +120,10 @@ export default function Dashboard() {
         </div>
       ))}
 
-      <CardForm type="thought" onCreated={fetchData} />
-      <CardForm type="learning" onCreated={fetchData} />
+      <div className="space-y-4">
+        <CardForm type="thought" onCreated={fetchData} />
+        <CardForm type="learning" onCreated={fetchData} />
+      </div>
     </div>
   )
 }
