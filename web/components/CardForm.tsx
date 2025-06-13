@@ -4,11 +4,12 @@ import { supabase } from '../lib/supabase'
 type CardType = 'thought' | 'learning'
 
 interface Props {
-  type: CardType
+  type?: CardType
   onCreated: () => void
 }
 
-export default function CardForm({ type, onCreated }: Props) {
+export default function CardForm({ type: definedType, onCreated }: Props) {
+  const [type, setType] = useState<CardType>(definedType ?? 'thought')
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [tag, setTag] = useState('')
@@ -44,7 +45,17 @@ export default function CardForm({ type, onCreated }: Props) {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-3 border border-accent/50 p-6 rounded-xl bg-white/70 shadow">
-      <h2 className="font-semibold capitalize">Create {type}</h2>
+      {!definedType && (
+        <select
+          value={type}
+          onChange={e => setType(e.target.value as CardType)}
+          className="border w-full p-2 rounded-md bg-white"
+        >
+          <option value="thought">Thought</option>
+          <option value="learning">Learning</option>
+        </select>
+      )}
+      {definedType && <h2 className="font-semibold capitalize">Create {definedType}</h2>}
       <input
         type="text"
         placeholder="Title"
@@ -74,3 +85,4 @@ export default function CardForm({ type, onCreated }: Props) {
     </form>
   )
 }
+
