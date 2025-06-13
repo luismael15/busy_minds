@@ -19,7 +19,14 @@ export default function Dashboard() {
   const [tagFilter, setTagFilter] = useState('')
 
   const fetchData = async () => {
-    const { data } = await supabase.from('cards').select('*').order('created_at', { ascending: false })
+    const {
+      data: { user },
+    } = await supabase.auth.getUser()
+    const { data } = await supabase
+      .from('cards')
+      .select('*')
+      .eq('user_id', user?.id)
+      .order('created_at', { ascending: false })
     if (data) setCards(data as Card[])
   }
 
